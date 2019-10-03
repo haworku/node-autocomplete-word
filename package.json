@@ -1,0 +1,9 @@
+{
+  "name": "autocomplete-word",
+  "version": "0.1.0",
+  "description": "Autocomplete word fragments using one or more text files as the data source",
+  "main": "autocomplete.js",
+  "author": "haworku",
+  "license": "ISC",
+  "dependencies": {}
+}
