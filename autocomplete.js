@@ -10,9 +10,8 @@ isWord = str => str != str.toUpperCase();
  True when autocomplete standard is met - text autocompletes fragment
  Excludes non-words from consideration
 */
-const isAutocompletable = (fragment, text) => {
-  return isWord(text) && text.includes(fragment);
-};
+const isAutocompletable = (fragment, text) =>
+  isWord(text) && text.includes(fragment);
 
 /*
  Returns array of objects { matchingWord: string, frequency: number}
@@ -62,4 +61,5 @@ const generateMatchingWords = (fragment, textData) => {
 };
 
 module.exports.generateMatchingWords = generateMatchingWords;
+module.exports.isAutocompletable = isAutocompletable;
 module.exports.isWord = isWord;
