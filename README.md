@@ -18,6 +18,6 @@ Autocomplete word fragments using one or more text files as the data source
 
 
 ## Known Bugs/Issues
-
+- Does not strip out parenthesis and so does not properly evaluate text immediately next to a parenthesis (e.g. `expect(isWord('(AND')).toBe(true)`does not pass)
 
 ## How to Extend

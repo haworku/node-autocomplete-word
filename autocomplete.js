@@ -3,9 +3,7 @@
  True when case transformation results in unequal strings
  Removes strings that are likely numbers or punctuation
 */
-isWord = str => {
-  return str != str.toUpperCase();
-};
+isWord = str => str != str.toUpperCase();
 
 /*
  Returns bool
@@ -43,7 +41,6 @@ const sortByFreq = wordsMap => {
 */
 const generateMatchingWords = (fragment, textData) => {
   cleanStr = str => str.toLowerCase().normalize();
-
   fragment = cleanStr(fragment);
   textData = cleanStr(textData);
 
@@ -65,3 +62,4 @@ const generateMatchingWords = (fragment, textData) => {
 };
 
 module.exports.generateMatchingWords = generateMatchingWords;
+module.exports.isWord = isWord;
