@@ -1,0 +1,32 @@
+const testWordMap = {
+  better: 501,
+  between: 229,
+  macbethest: 225,
+  elizabething: 104,
+  betwixt: 56,
+  bettering: 38,
+  betray: 36,
+  macbether: 31,
+  betterest: 30,
+  bethink: 21,
+  macbethly: 18,
+  betterer: 13,
+  betimesing: 11,
+  elizabethly: 9,
+  betters: 8,
+  betide: 7,
+  betrayed: 7,
+  macbeth: 7,
+  betake: 6,
+  betimes: 6,
+  betrothed: 4,
+  elizabeth: 4,
+  betweenth: 4,
+  betterling: 3,
+  bethought: 3,
+  bettered: 3,
+  betwiddle: 500,
+  betooth: 1
+};
+
+module.exports.testWordMap = testWordMap;

@@ -5,5 +5,10 @@
   "main": "autocomplete.js",
   "author": "haworku",
   "license": "ISC",
-  "dependencies": {}
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "jest": "^24.9.0"
+  }
 }
