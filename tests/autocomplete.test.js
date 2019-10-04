@@ -1,6 +1,5 @@
-const { isAutocompletable, isWord } = require('../autocomplete.js');
-
-// toEqual for objects
+const { isAutocompletable, isWord, sortByFreq } = require('../autocomplete.js');
+const { testWordMap } = require('../fixtures/testData.js');
 
 describe('isWord', () => {
   test('true for latin words', () => {
@@ -53,5 +52,48 @@ describe('isAutocompletable', () => {
 
   test('false for text that is not a word', () => {
     expect(isAutocompletable('1990-1993', '1990-1993')).toBe(false);
+  });
+});
+
+describe('sortByFreq', () => {
+  test('returns empty array if no words match fragment', () => {
+    expect(sortByFreq({})).toEqual([]);
+  });
+
+  test('returns array sorted by frequency when passed valid word map ', () => {
+    const testInput = {
+      betwix: 12,
+      between: 200,
+      betwiddle: 2
+    };
+
+    const testSorted = [
+      { matchingWord: 'between', frequency: 200 },
+      { matchingWord: 'betwix', frequency: 12 },
+      { matchingWord: 'betwiddle', frequency: 2 }
+    ];
+
+    expect(sortByFreq(testInput)).toHaveLength(3);
+    expect(sortByFreq(testInput)).toEqual(testSorted);
+  });
+
+  test('returns array of 25 if passed valid word map that is larger', () => {
+    expect(sortByFreq(testWordMap)).toHaveLength(25);
+  });
+
+  test('returns array of the most frequent words', () => {
+    expect(sortByFreq(testWordMap)).toEqual(
+      expect.arrayContaining([
+        { frequency: 501, matchingWord: 'better' },
+        { frequency: 500, matchingWord: 'betwiddle' }
+      ])
+    );
+
+    expect(sortByFreq(testWordMap)).not.toEqual(
+      expect.arrayContaining([
+        { frequency: 3, matchingWord: 'betterling' },
+        { frequency: 1, matchingWord: 'betooth' }
+      ])
+    );
   });
 });

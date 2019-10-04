@@ -31,15 +31,17 @@ const sortByFreq = wordsMap => {
     .sort(function(a, b) {
       return b.frequency - a.frequency;
     })
-    .slice(0, 24);
+    .slice(0, 25);
 };
+
+cleanStr = str => str.toLowerCase().normalize();
+
 /*
   MAIN 
   Returns array of objects { matchingWord: string, frequency: number} 
   Generates list of words that contain autocomplete text fragment
 */
 const generateMatchingWords = (fragment, textData) => {
-  cleanStr = str => str.toLowerCase().normalize();
   fragment = cleanStr(fragment);
   textData = cleanStr(textData);
 
@@ -60,6 +62,8 @@ const generateMatchingWords = (fragment, textData) => {
   return matchingArray;
 };
 
+module.exports.cleanStr = cleanStr;
 module.exports.generateMatchingWords = generateMatchingWords;
 module.exports.isAutocompletable = isAutocompletable;
 module.exports.isWord = isWord;
+module.exports.sortByFreq = sortByFreq;
