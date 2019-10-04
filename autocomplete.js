@@ -10,8 +10,10 @@ isWord = str => str != str.toUpperCase();
  True when autocomplete standard is met - text autocompletes fragment
  Excludes non-words from consideration
 */
-const isAutocompletable = (fragment, text) =>
-  isWord(text) && text.includes(fragment);
+const isAutocompletable = (fragment, text) => {
+  const re = new RegExp(fragment, 'gu');
+  return isWord(text) && Boolean(text.match(re));
+};
 
 /*
  Returns array of objects { matchingWord: string, frequency: number}
@@ -40,12 +42,15 @@ cleanStr = str => str.toLowerCase().normalize();
   MAIN 
   Returns array of objects { matchingWord: string, frequency: number} 
   Generates list of words that contain autocomplete text fragment
+  Strips out extra spaces and non-word related punctuation 
 */
 const generateMatchingWords = (fragment, textData) => {
   fragment = cleanStr(fragment);
   textData = cleanStr(textData);
 
-  const textArray = textData.split(/\s+/);
+  const textArray = textData
+    .replace(/[.,\/#!$%\^&\*;:{}=\_`~()]/g, '')
+    .split(/\s+/);
   const matchingMap = {};
 
   textArray.forEach(function(text) {
@@ -62,7 +67,6 @@ const generateMatchingWords = (fragment, textData) => {
   return matchingArray;
 };
 
-module.exports.cleanStr = cleanStr;
 module.exports.generateMatchingWords = generateMatchingWords;
 module.exports.isAutocompletable = isAutocompletable;
 module.exports.isWord = isWord;

@@ -53,6 +53,10 @@ describe('isAutocompletable', () => {
   test('false for text that is not a word', () => {
     expect(isAutocompletable('1990-1993', '1990-1993')).toBe(false);
   });
+
+  test('supports unicode data', () => {
+    expect(isAutocompletable('ünch', 'münchen')).toBe(true);
+  });
 });
 
 describe('sortByFreq', () => {
