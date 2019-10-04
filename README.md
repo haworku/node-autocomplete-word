@@ -24,4 +24,5 @@ Autocomplete word fragments using one or more text files as the data source
 ## How to Extend
 - Consider alternatives to `fs.readFile` which is not performant on larger files. Also, use async file read (wrap in promise, for example).
 - Implement matching/search algorithms.
-- Consider space complexity
+- Consider space complexity... in general
+- Seek to optimize sortByFreq
